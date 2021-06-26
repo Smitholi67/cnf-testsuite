@@ -211,9 +211,9 @@ jobs:
           lib-
     - name: Build Release
       run: |
-        docker pull conformance/crystal:0.35.1
-        docker run --rm -v $PWD:/workspace -w /workspace conformance/crystal:0.35.1-llvm10-grep shards install
-        docker run --rm -v $PWD:/workspace -w /workspace conformance/crystal:0.35.1-llvm10-grep crystal build --warnings none src/cnf-testsuite.cr --release --static --link-flags '-lxml2 -llzma'
+        docker pull hashnuke/crystal-custom:1.0.0-alpine-r1
+        docker run --rm -v $PWD:/workspace -w /workspace hashnuke/crystal-custom:1.0.0-alpine-r1 shards install
+        docker run --rm -v $PWD:/workspace -w /workspace hashnuke/crystal-custom:1.0.0-alpine-r1 crystal build --warnings none src/cnf-testsuite.cr --release --static --link-flags '-lxml2 -llzma'
     - name: upload artifact
       uses: actions/upload-artifact@v2
       with:
